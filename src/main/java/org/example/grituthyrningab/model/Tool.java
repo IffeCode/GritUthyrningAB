@@ -27,8 +27,6 @@ public class Tool {
     message = "Description must contain at least 15 characters!")
     private String toolDescription;
 
-
-
-
-
+    public Tool() {
+    }
 }
