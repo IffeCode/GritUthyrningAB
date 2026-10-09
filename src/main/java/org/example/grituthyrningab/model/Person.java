@@ -13,7 +13,7 @@ public class Person {
     @GeneratedValue - AUTO - fungerar som AUTOINCREMENT, användare skapas och id ges automatiskt
     @Column - unique - true, får bara finnas ett. Kan inte skapa nytt konto med redan använd mejl exempel
     @Pattern - kan användas för skapa regex
-
+    @Size - hur många min eller/och max tecken som ska finnas
      */
 
     @Id
