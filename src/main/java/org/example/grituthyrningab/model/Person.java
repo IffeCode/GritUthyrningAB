@@ -8,6 +8,7 @@ import jakarta.validation.constraints.Size;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "person")
@@ -58,7 +59,7 @@ public class Person {
     joinColumns = @JoinColumn(name = "person_id"),
     inverseJoinColumns = @JoinColumn(name = "tools_id"))
 
-    private List<Tool> tools = new HashSet<>();
+    private Set<Tool> tools = new HashSet<>();
 
 
     public Person() {

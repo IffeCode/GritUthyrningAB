@@ -4,6 +4,9 @@ package org.example.grituthyrningab.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "tools")
@@ -27,6 +30,9 @@ public class Tool {
     @Size(min = 15,
     message = "Description must contain at least 15 characters!")
     private String toolDescription;
+
+    @ManyToMany(mappedBy = "tools")
+    private Set<Person> persons = new HashSet<>();
 
     public Tool() {
     }
