@@ -47,12 +47,11 @@ public class Person {
     private String password = "";
 
     @Column(nullable = false)
-    private String role = "USER";
+    private String role = "USER"; //Blir automatiskt user när användare skapas
 
 
-
-
-
+    public Person() {
+    }
 
 
 }
