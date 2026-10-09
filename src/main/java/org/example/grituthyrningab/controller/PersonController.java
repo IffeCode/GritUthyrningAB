@@ -1,10 +1,11 @@
 package org.example.grituthyrningab.controller;
 
+import jakarta.validation.Valid;
 import org.example.grituthyrningab.model.Person;
 import org.example.grituthyrningab.service.PersonService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,9 +19,30 @@ public class PersonController {
         this.personService = personService;
     }
 
+    //Listar alla person
     @GetMapping("person/")
     public List<Person> list(){
         return personService.listAll();
+    }
+
+    //Hämtar en specifik person med id
+    @GetMapping("person/{id}")
+    public Person get(@PathVariable Long id){
+        return personService.get(id);
+    }
+
+    //update person med id
+    @PutMapping("person/{id}")
+    public Person update(@Valid
+                         @RequestBody Person person,
+                         @PathVariable Long id){
+     return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    //delete person - med id
+    @DeleteMapping("person/{id}")
+    public void delete(@PathVariable Long id){
+        personService.delete(id);
     }
 
 }

@@ -19,7 +19,7 @@ public class PersonService {
         return personRepository.findAll();
     }
 
-    public Person findById(Long id) {
+    public Person get(Long id) {
         return personRepository.findById(id).get();
     }
 
