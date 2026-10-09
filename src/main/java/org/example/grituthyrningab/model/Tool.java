@@ -36,6 +36,27 @@ public class Tool {
         this.toolDescription = toolDescription;
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public String getToolName() {
+        return toolName;
+    }
+
+    public void setToolName(String toolName) {
+        this.toolName = toolName;
+    }
+
+    public String getToolDescription() {
+        return toolDescription;
+    }
+
+    public void setToolDescription(String toolDescription) {
+        this.toolDescription = toolDescription;
+    }
 }
