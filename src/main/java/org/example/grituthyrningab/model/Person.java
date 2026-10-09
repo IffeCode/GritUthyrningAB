@@ -53,5 +53,16 @@ public class Person {
     public Person() {
     }
 
+    public Person(Long id, String fullName, String email, String phoneNumber,
+                  String username, String password, String role) {
+        this.id = id;
+        this.fullName = fullName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
 
 }
