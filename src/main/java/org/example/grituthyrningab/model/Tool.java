@@ -29,4 +29,13 @@ public class Tool {
 
     public Tool() {
     }
+
+    public Tool(Long id, String toolName, String toolDescription) {
+        this.id = id;
+        this.toolName = toolName;
+        this.toolDescription = toolDescription;
+    }
+
+
+
 }
