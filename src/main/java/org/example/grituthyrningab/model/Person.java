@@ -6,7 +6,11 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+import java.util.HashSet;
+import java.util.List;
+
 @Entity
+@Table(name = "person")
 public class Person {
 
     /*
@@ -48,6 +52,13 @@ public class Person {
 
     @Column(nullable = false)
     private String role = "USER"; //Blir automatiskt user när användare skapas
+
+    @ManyToMany
+    @JoinTable(name = "person_tools",
+    joinColumns = @JoinColumn(name = "person_id"),
+    inverseJoinColumns = @JoinColumn(name = "tools_id"))
+
+    private List<Tool> tools = new HashSet<>();
 
 
     public Person() {

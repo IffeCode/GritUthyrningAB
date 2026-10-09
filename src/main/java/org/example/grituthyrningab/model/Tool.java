@@ -6,6 +6,7 @@ import jakarta.validation.constraints.Size;
 
 
 @Entity
+@Table(name = "tools")
 public class Tool {
 
         /*
