@@ -59,4 +59,13 @@ public class Tool {
     public void setToolDescription(String toolDescription) {
         this.toolDescription = toolDescription;
     }
+
+    @Override
+    public String toString() {
+        return "Tool{" +
+                "id=" + id +
+                ", toolName='" + toolName + '\'' +
+                ", toolDescription='" + toolDescription + '\'' +
+                '}';
+    }
 }
