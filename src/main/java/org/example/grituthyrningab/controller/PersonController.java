@@ -31,9 +31,14 @@ public class PersonController {
         return personService.get(id);
     }
 
+    @PostMapping("person/")
+    public Person create(@Valid @RequestBody Person person){
+        return personService.save(person);
+    }
+
     //update person med id
     @PutMapping("person/{id}")
-    public Person update(@Valid
+    public ResponseEntity<?> update(@Valid
                          @RequestBody Person person,
                          @PathVariable Long id){
      return new ResponseEntity<>(HttpStatus.OK);
