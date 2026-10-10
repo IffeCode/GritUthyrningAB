@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api/person")
 public class PersonController {
 
     private PersonService personService;
@@ -20,24 +20,24 @@ public class PersonController {
     }
 
     //Listar alla person
-    @GetMapping("person/")
+    @GetMapping("/")
     public List<Person> list(){
         return personService.listAll();
     }
 
     //Hämtar en specifik person med id
-    @GetMapping("person/{id}")
+    @GetMapping("/{id}")
     public Person get(@PathVariable Long id){
         return personService.get(id);
     }
 
-    @PostMapping("person/")
+    @PostMapping("/")
     public Person create(@Valid @RequestBody Person person){
         return personService.save(person);
     }
 
     //update person med id
-    @PutMapping("person/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<?> update(@Valid
                          @RequestBody Person person,
                          @PathVariable Long id){
@@ -45,7 +45,7 @@ public class PersonController {
     }
 
     //delete person - med id
-    @DeleteMapping("person/{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         personService.delete(id);
     }
