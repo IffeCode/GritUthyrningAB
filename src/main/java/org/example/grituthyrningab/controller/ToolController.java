@@ -40,5 +40,9 @@ public class ToolController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @DeleteMapping("/{id}")
+    public void  delete(@PathVariable Long id){
+        toolService.delete(id);
+    }
 
 }
