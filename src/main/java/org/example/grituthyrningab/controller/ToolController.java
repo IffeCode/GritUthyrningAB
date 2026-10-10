@@ -3,6 +3,8 @@ package org.example.grituthyrningab.controller;
 import jakarta.validation.Valid;
 import org.example.grituthyrningab.model.Tool;
 import org.example.grituthyrningab.service.ToolService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +32,12 @@ public class ToolController {
     @PostMapping("/")
     public Tool save(@Valid @RequestBody Tool tool){
         return toolService.save(tool);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable Long id,
+                                    @Valid @RequestBody Tool tool){
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
