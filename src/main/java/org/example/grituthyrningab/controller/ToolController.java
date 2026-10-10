@@ -1,11 +1,9 @@
 package org.example.grituthyrningab.controller;
 
+import jakarta.validation.Valid;
 import org.example.grituthyrningab.model.Tool;
 import org.example.grituthyrningab.service.ToolService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,7 +27,10 @@ public class ToolController {
         return toolService.get(id);
     }
 
-
+    @PostMapping("/")
+    public Tool save(@Valid @RequestBody Tool tool){
+        return toolService.save(tool);
+    }
 
 
 }
