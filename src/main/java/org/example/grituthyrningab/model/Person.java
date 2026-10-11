@@ -140,7 +140,6 @@ public class Person {
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
                 '}';
     }
