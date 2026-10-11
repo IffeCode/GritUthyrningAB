@@ -40,5 +40,9 @@ public class LoanController {
         return loanService.borrowTool(personId,toolId,dueDate);
     }
 
+    @PutMapping("{id}/return")
+    public Loan returnTool(@PathVariable Long id){
+        return loanService.returnTool(id);
+    }
 
 }
