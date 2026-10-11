@@ -1,5 +1,6 @@
 package org.example.grituthyrningab.controller;
 
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -17,7 +18,7 @@ public class GlobalExceptionHandler {
      */
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ProblemDetail handleExceptionArgumentNotValid(
+    public ProblemDetail handleMethodArgumentNotValid(
             MethodArgumentNotValidException e){
 
         var pd = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
@@ -36,6 +37,27 @@ public class GlobalExceptionHandler {
 
         return pd;
 
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    public ProblemDetail handleConstraintViolationException(
+            ConstraintViolationException e
+    ){
+        var pd  = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
+        pd.setTitle("Constraint Failed!");
+        pd.setDetail("Request parameters/path variables are invalid!");
+        var errors = e.getConstraintViolations().stream()
+                .map(cv -> Map.of(
+                        "property", cv.getPropertyPath().toString(),
+                        "invalidValue", cv.getInvalidValue().toString(),
+                        "message", cv.getMessage()
+                ))
+                .toList();
+
+        pd.setProperty("errors", errors);
+        pd.setProperty("timestamp", OffsetDateTime.now());
+
+        return pd;
     }
 
 
