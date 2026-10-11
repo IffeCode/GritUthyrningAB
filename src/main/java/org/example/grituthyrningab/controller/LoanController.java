@@ -1,5 +1,7 @@
 package org.example.grituthyrningab.controller;
 
+import jakarta.validation.Valid;
+import org.example.grituthyrningab.model.BorrowRequest;
 import org.example.grituthyrningab.model.Loan;
 import org.example.grituthyrningab.service.LoanService;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -31,13 +33,13 @@ public class LoanController {
 
     @PostMapping("/borrow")
     @ResponseStatus(HttpStatus.CREATED)
-    public Loan borrowTool(@RequestParam Long personId,
-                           @RequestParam Long toolId,
-                           @RequestParam
-                           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-                           LocalDate dueDate){
+    public Loan borrowTool(@Valid @RequestBody BorrowRequest request){
 
-        return loanService.borrowTool(personId,toolId,dueDate);
+        return loanService.borrowTool(
+                request.getPersonId(),
+                request.getToolId(),
+                request.getDueDate()
+        );
     }
 
     @PutMapping("{id}/return")
