@@ -2,11 +2,11 @@ package org.example.grituthyrningab.controller;
 
 import org.example.grituthyrningab.model.Loan;
 import org.example.grituthyrningab.service.LoanService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -27,6 +27,17 @@ public class LoanController {
     @GetMapping("/{id}")
     public Loan get(@PathVariable Long id){
         return loanService.get(id);
+    }
+
+    @PostMapping("/borrow")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Loan borrowTool(@RequestParam Long personId,
+                           @RequestParam Long toolId,
+                           @RequestParam
+                           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+                           LocalDate dueDate){
+
+        return loanService.borrowTool(personId,toolId,dueDate);
     }
 
 
