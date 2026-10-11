@@ -76,6 +76,18 @@ public class Person {
         this.role = role;
     }
 
+    public Person(Set<Tool> tools) {
+        this.tools = tools;
+    }
+
+    public Set<Tool> getTools() {
+        return tools;
+    }
+
+    public void setTools(Set<Tool> tools) {
+        this.tools = tools;
+    }
+
     public Long getId() {
         return id;
     }
