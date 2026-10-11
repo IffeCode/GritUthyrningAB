@@ -38,10 +38,10 @@ public class PersonController {
 
     //update person med id
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@Valid
+    public Person update(@Valid
                          @RequestBody Person person,
                          @PathVariable Long id){
-     return new ResponseEntity<>(HttpStatus.OK);
+     return  personService.update(id, person);
     }
 
     //delete person - med id

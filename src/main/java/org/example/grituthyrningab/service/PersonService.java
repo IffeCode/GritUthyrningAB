@@ -29,6 +29,25 @@ public class PersonService {
         return personRepository.save(person);
     }
 
+    public Person update(Long id, Person person) {
+        Person existingPerson = get(id);
+
+        if (person.getFullName() != null) {
+            existingPerson.setFullName(person.getFullName());
+        }
+        if (person.getEmail() != null) {
+            existingPerson.setEmail(person.getEmail());
+        }
+        if (person.getPhoneNumber() != null) {
+            existingPerson.setPhoneNumber(person.getPhoneNumber());
+        }
+        if (person.getUsername() != null) {
+            existingPerson.setUsername(person.getUsername());
+        }
+
+        return personRepository.save(existingPerson);
+    }
+
     public void delete(Long id) {
         personRepository.deleteById(id);
     }

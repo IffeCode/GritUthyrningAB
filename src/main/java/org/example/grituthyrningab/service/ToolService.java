@@ -29,6 +29,19 @@ public class ToolService {
         return toolRepository.save(tool);
     }
 
+    public Tool update(Long id, Tool tool) {
+        Tool existingTool = get(id);
+
+        if (tool.getToolName() != null) {
+            existingTool.setToolName(tool.getToolName());
+        }
+        if (tool.getToolDescription() != null) {
+            existingTool.setToolDescription(tool.getToolDescription());
+        }
+
+        return toolRepository.save(existingTool);
+    }
+
     public void delete(Long id) {
         toolRepository.deleteById(id);
     }
