@@ -2,8 +2,10 @@ package org.example.grituthyrningab.service;
 
 import org.example.grituthyrningab.model.Tool;
 import org.example.grituthyrningab.repository.ToolRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -22,7 +24,12 @@ public class ToolService {
     }
 
     public Tool get(Long id) {
-        return toolRepository.findById(id).get();
+        return toolRepository.findById(id)
+                .orElseThrow(() ->
+                new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Tool not found with id: " + id
+                ));
     }
 
     public Tool save(Tool tool) {
@@ -42,7 +49,14 @@ public class ToolService {
         return toolRepository.save(existingTool);
     }
 
+    //om tool finns skickas json body annars får vi 404 "not found"
     public void delete(Long id) {
+        toolRepository.findById(id)
+                        .orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "Tool not found with id: " + id
+        ));
+
         toolRepository.deleteById(id);
     }
 

@@ -2,8 +2,10 @@ package org.example.grituthyrningab.service;
 
 import org.example.grituthyrningab.model.Person;
 import org.example.grituthyrningab.repository.PersonRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -22,7 +24,12 @@ public class PersonService {
     }
 
     public Person get(Long id) {
-        return personRepository.findById(id).get();
+        return personRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResponseStatusException(
+                                HttpStatus.NOT_FOUND,
+                                "Person not found with id: " + id
+                        ));
     }
 
     public Person save(Person person) {
@@ -48,8 +55,16 @@ public class PersonService {
         return personRepository.save(existingPerson);
     }
 
+    //om person finns skickas json body annars får vi 404 "not found"
     public void delete(Long id) {
+        personRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "Person not found with id: " + id
+        ));
+
         personRepository.deleteById(id);
+
     }
 
 
