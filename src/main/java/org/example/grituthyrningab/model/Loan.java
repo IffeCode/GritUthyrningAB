@@ -1,6 +1,7 @@
 package org.example.grituthyrningab.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 import java.time.LocalDate;
@@ -21,14 +22,17 @@ public class Loan {
     @JoinColumn(name = "tool_id", nullable = false)
     private Tool tool;
 
+    @NotNull(message = "Loan date is required!")
     @Column(nullable = false)
     private LocalDate loanDate;
 
+    @NotNull(message = "Due date is required!")
     @Column(nullable = false)
     private LocalDate dueDate;
 
     private LocalDate returnDate;
 
+    @NotNull(message = "Status is required!")
     @Column(nullable = false)
     @Pattern(
             regexp = "^(ACTIVE|RETURNED|OVERDUE)$",
