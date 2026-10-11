@@ -36,5 +36,18 @@ public class Loan {
     )
     private String status = "ACTIVE";
 
+    public Loan() {
+    }
 
+    public Loan(Long id, Person person, Tool tool,
+                LocalDate loanDate, LocalDate dueDate,
+                LocalDate returnDate, String status) {
+        this.id = id;
+        this.person = person;
+        this.tool = tool;
+        this.loanDate = loanDate;
+        this.dueDate = dueDate;
+        this.returnDate = returnDate;
+        this.status = status;
+    }
 }
