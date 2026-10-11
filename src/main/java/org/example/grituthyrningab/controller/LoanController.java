@@ -45,4 +45,11 @@ public class LoanController {
         return loanService.returnTool(id);
     }
 
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id){
+        loanService.delete(id);
+    }
+
+
 }
