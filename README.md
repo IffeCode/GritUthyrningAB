@@ -1,10 +1,10 @@
 # GritUthyrningAB
 
-Ett REST API utvecklat i Java och Spring Boot som en del av en backend uppgift på Gritacademy.
+Ett REST API utvecklat i Java och Spring Boot som en del av en backend uppgift på Grit Academy.
 
 Applikationen demonstrerar utveckling av REST API:er, CRUD-operationer, relation mellan databaser och entitet.
 
-## Funtioner
+## Funktioner
 
 
 - Skapa, hämta, uppdatera och ta bort personer
@@ -45,7 +45,7 @@ API:et används bland annat för att:
 
 Swagger UI används för att utforska och testa API:ets tillgängliga endpoints.
 
-När applikkationen körs lokalt finns dokumentationen på: 
+När applikationen körs lokalt finns dokumentationen på: 
     http://localhost:8081/swagger-ui/index.html
 
 ## Applikationens struktur
@@ -55,7 +55,7 @@ Applikationen är uppdelad i controllers, services, modeller, repositories och r
 ### Person-modell
 
 Person representerar en person som kan hyra utrustning.
-Modellen inehåller information som: 
+Modellen innehåller information som: 
 - Personens ID
 - Fullständigt namn
 - E-postadress
